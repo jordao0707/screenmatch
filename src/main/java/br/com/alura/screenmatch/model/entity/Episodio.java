@@ -1,6 +1,7 @@
 package br.com.alura.screenmatch.model.entity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 import br.com.alura.screenmatch.model.dto.EpisodioDto;
 
@@ -15,8 +16,17 @@ public class Episodio {
         this.temporada = temporada;
         this.titulo = episodio.titulo();
         this.numeroEpisodio = episodio.numero();
-        this.avaliacao = Double.valueOf(episodio.avaliacao());
-        this.dataLancamento = LocalDate.parse(episodio.dataLancamento());
+        try {
+            this.avaliacao = Double.valueOf(episodio.avaliacao());
+        } catch (NumberFormatException e) {
+            this.avaliacao = 0.0;
+        }
+        try {
+            this.dataLancamento = LocalDate.parse(episodio.dataLancamento());
+        } catch (DateTimeParseException e) {
+            this.dataLancamento = null;
+        }
+
     }
 
     public Integer getTemporada() {

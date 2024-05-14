@@ -8,5 +8,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record TemporadaDto(
         @JsonAlias("Season") Integer numero,
-        @JsonAlias("Episodes") List<EpisodioDto> episodio) {
+        @JsonAlias("Episodes") List<EpisodioDto> episodios) {
 }
